@@ -14,4 +14,21 @@ export class ProductsService {
       image: '',
     },
   ];
+  findAll() {
+    return this.products;
+  }
+
+  findOne(id: number) {
+    const product = this.products.find((item) => item.id === id);
+    return product;
+  }
+
+  create(data: Product) {
+    this.counterId += 1;
+    const newProduct: Product = {
+      id: this.counterId,
+      ...data,
+    };
+    this.products.push(newProduct);
+  }
 }
