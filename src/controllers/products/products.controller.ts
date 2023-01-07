@@ -11,8 +11,11 @@ import {
   Query,
 } from '@nestjs/common';
 
+import { ProductsService } from 'src/services/products/products.service';
+
 @Controller('products')
 export class ProductsController {
+  constructor(private productService: ProductsService) {}
   /* Get Methods */
   @HttpCode(HttpStatus.ACCEPTED)
   @Get()
@@ -22,7 +25,7 @@ export class ProductsController {
     @Query('brand') brand: string,
   ) {
     return {
-      message: `product limit => ${limit} offset => ${offset} brand => ${brand}`,
+      message: this.productService.findAll(),
     };
   }
 
@@ -36,37 +39,35 @@ export class ProductsController {
   @Get('/:productId')
   getProduct(@Param('productId') productId: number) {
     return {
-      message: `product ${productId}`,
+      message: this.productService.findOne(productId),
     };
   }
 
   /* Post Methods */
   @Post()
   create(@Body() payload: any) {
+    const newProduct = this.productService.create(payload);
     return {
       message: 'created',
-      payload,
+      newProduct,
     };
   }
 
   /* Patch Methods */
   @Patch('/:id')
   update(@Param('id') id: number, @Body() payload: any) {
+    const product = this.productService.update(id, payload);
     return {
       message: 'updated',
       payload: {
-        id,
-        payload,
+        product,
       },
     };
   }
 
   /* Deleted Methods */
   @Delete('/:id')
-  delete(@Param('id') id: number, @Body() payload: any) {
-    return {
-      message: `product ${id} deleted`,
-      payload,
-    };
+  delete(@Param('id') id: number) {
+    return this.productService.remove(id);
   }
 }
