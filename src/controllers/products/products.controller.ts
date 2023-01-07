@@ -57,7 +57,7 @@ export class ProductsController {
   /* Patch Methods */
   @Patch('/:id')
   update(@Param('id') id: number, @Body() payload: any) {
-    const product = this.productService.update(+id, payload);
+    const product = this.productService.update(id, payload);
     return {
       message: 'updated',
       payload: {
