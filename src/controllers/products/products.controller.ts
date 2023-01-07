@@ -56,8 +56,8 @@ export class ProductsController {
 
   /* Patch Methods */
   @Patch('/:id')
-  update(@Param('id') id: number, @Body() payload: any) {
-    const product = this.productService.update(id, payload);
+  update(@Param('id', ParseIntPipe) id: number, @Body() payload: any) {
+    const product = this.productService.update(+id, payload);
     return {
       message: 'updated',
       payload: {
@@ -68,7 +68,7 @@ export class ProductsController {
 
   /* Deleted Methods */
   @Delete('/:id')
-  delete(@Param('id') id: number) {
+  delete(@Param('id', ParseIntPipe) id: number) {
     return this.productService.remove(+id);
   }
 }
