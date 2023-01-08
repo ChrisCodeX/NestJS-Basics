@@ -41,14 +41,11 @@ export class ProductsService {
   update(id: number, changes: UpdateProductDto) {
     const product = this.findOne(id);
     const index = this.products.findIndex((item) => item.id == id);
-    if (index != -1) {
-      this.products[index] = {
-        ...product,
-        ...changes,
-      };
-      return this.products[index];
-    }
-    return null;
+    this.products[index] = {
+      ...product,
+      ...changes,
+    };
+    return this.products[index];
   }
 
   remove(productId: number) {
