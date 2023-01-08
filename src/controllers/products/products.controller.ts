@@ -38,7 +38,7 @@ export class ProductsController {
   }
 
   @Get('/:productId')
-  getProduct(@Param('productId') productId: number) {
+  getProduct(@Param('productId', ParseIntPipe) productId: number) {
     return {
       message: this.productService.findOne(+productId),
     };
