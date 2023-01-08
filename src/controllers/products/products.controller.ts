@@ -14,6 +14,9 @@ import {
 
 import { ProductsService } from 'src/services/products/products.service';
 
+/* This is my pipe */
+// import { ParseIntPipe } from 'src/common/parse-int/parse-int.pipe';
+
 @Controller('products')
 export class ProductsController {
   constructor(private productService: ProductsService) {}
