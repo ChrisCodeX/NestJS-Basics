@@ -12,7 +12,7 @@ import {
   ParseIntPipe,
 } from '@nestjs/common';
 
-/* This is my pipe */
+/* This is a pipe customized */
 // import { ParseIntPipe } from 'src/common/parse-int/parse-int.pipe';
 
 // Product Service import
@@ -30,17 +30,9 @@ export class ProductsController {
   getProducts(
     @Query('limit', ParseIntPipe) limit: number,
     @Query('offset', ParseIntPipe) offset: number,
-    @Query('brand') brand: string,
   ) {
     return {
       message: this.productService.findAll(),
-    };
-  }
-
-  @Get('/filter')
-  getProductFilter() {
-    return {
-      message: 'Im a filter',
     };
   }
 
@@ -79,6 +71,6 @@ export class ProductsController {
   /* Deleted Methods */
   @Delete('/:id')
   delete(@Param('id', ParseIntPipe) id: number) {
-    return this.productService.remove(+id);
+    return this.productService.remove(id);
   }
 }

@@ -6,30 +6,37 @@ import {
   IsNotEmpty,
 } from 'class-validator';
 
-import { PartialType } from '@nestjs/graphql';
+import { Field, InputType, PartialType } from '@nestjs/graphql';
 
+@InputType()
 export class CreateProductDto {
+  @Field()
   @IsString()
   @IsNotEmpty()
   readonly name: string;
 
+  @Field()
   @IsNotEmpty()
   @IsString()
   readonly description: string;
 
+  @Field()
   @IsNotEmpty()
   @IsNumber()
   @IsPositive()
   readonly price: number;
 
+  @Field()
   @IsNotEmpty()
   @IsNumber()
   @IsPositive()
   readonly stock: number;
 
+  @Field()
   @IsNotEmpty()
   @IsUrl()
   readonly image: string;
 }
 
+@InputType()
 export class UpdateProductDto extends PartialType(CreateProductDto) {}
