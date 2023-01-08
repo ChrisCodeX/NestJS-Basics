@@ -8,7 +8,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { CreateCategoryDto, UpdateCategoryDto } from 'src/dto/category.dto';
+import { CreateCategoryDto, UpdateCategoryDto } from 'src/dto/categories.dto';
 
 import { CategoriesService } from 'src/services/categories/categories.service';
 

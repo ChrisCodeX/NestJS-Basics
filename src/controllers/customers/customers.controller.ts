@@ -11,7 +11,7 @@ import {
 
 import { CustomersService } from 'src/services/customers/customers.service';
 
-import { CreateCustomerDto, UpdateCustomerDto } from 'src/dto/customer.dto';
+import { CreateCustomerDto, UpdateCustomerDto } from 'src/dto/customers.dto';
 
 @Controller('customers')
 export class CustomersController {
