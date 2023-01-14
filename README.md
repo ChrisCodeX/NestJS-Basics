@@ -7,5 +7,4 @@
 
 :open_book: Documentation:
 - :red_circle: https://docs.nestjs.com/
-- :red_circle: https://docs.nestjs.com/cli/overview
-- :red_circle: https://docs.nestjs.com/fundamentals/injection-scopes
+- :red_circle: https://docs.nestjs.com/v8/
